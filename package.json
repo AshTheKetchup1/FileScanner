@@ -1,0 +1,22 @@
+{
+  "name": "filescanner",
+  "version": "0.1.0",
+  "description": "This project will allow us to watch folders and send files for scanning.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshTheKetchup1/FileScanner.git"
+  },
+  "author": "AshTheKetchup1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshTheKetchup1/FileScanner/issues"
+  },
+  "homepage": "https://github.com/AshTheKetchup1/FileScanner#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+}
