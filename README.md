@@ -2,8 +2,8 @@
 
 FileScanner is a project built by [AshTheKetchup1](https://github.com/AshTheKetchup1) and [Genide](https://github.com/Genide). 
 
-FileScanner can:
-- Will watch over a set of file/directories
+FileScanner will:
+- Watch over a set of file/directories
 - Send files off for scanning using VirusTotal
 
 ## Getting the latest changes
