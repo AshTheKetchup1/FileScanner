@@ -16,12 +16,12 @@ FileScanner will:
     ```
 3. Pull in the latest changes from Github.
 
-    ```
+    ```sh
     git pull origin master
     ```
 4. Install the need packages to build and run this project.
 
-    ```
+    ```sh
     npm install
     ```
 5. Take a bow. You are done with set up! :D
