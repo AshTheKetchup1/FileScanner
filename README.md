@@ -10,14 +10,17 @@ FileScanner will:
 1. Run Git Bash.
 
 2. Go to the directory that holds this project on your computer. For example...
+
     ```sh
     cd /c/Users/<Your name>/Github Projects/FileScanner
     ```
 3. Pull in the latest changes from Github.
+
     ```
     git pull origin master
     ```
 4. Install the need packages to build and run this project.
+
     ```
     npm install
     ```
