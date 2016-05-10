@@ -6,7 +6,7 @@ FileScanner will:
 - Watch over a set of file/directories
 - Send files off for scanning using VirusTotal
 
-## Getting the latest changes
+## First time set up
 1. Run Git Bash.
 
 2. Go to the directory that holds this project on your computer. For example...
@@ -22,6 +22,7 @@ FileScanner will:
 4. Install the need packages to build and run this project.
 
     ```sh
+    npm install grunt-cli -g
     npm install
     ```
 5. Take a bow. You are done with set up! :D
