@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s)
-	grunt.registerTask('test', ['jshint']);
+	grunt.registerTask('test', ['jshint', 'shell:test']);
 	grunt.registerTask('clean', ['shell:clean']);
 	grunt.registerTask('default', ['test', 'connect', 'watch']);
 };

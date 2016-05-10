@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AshTheKetchup1/FileScanner#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "grunt": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
