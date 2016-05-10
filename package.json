@@ -2,7 +2,7 @@
   "name": "filescanner",
   "version": "0.1.0",
   "description": "This project will allow us to watch folders and send files for scanning.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "grunt test"
   },
@@ -17,6 +17,15 @@
   },
   "homepage": "https://github.com/AshTheKetchup1/FileScanner#readme",
   "devDependencies": {
-    "grunt": "^1.0.1"
+    "coveralls": "^2.11.9",
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-shell": "^1.3.0",
+    "istanbul": "^0.4.3",
+    "load-grunt-tasks": "^3.5.0",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.4"
   }
 }
