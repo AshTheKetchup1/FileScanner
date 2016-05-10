@@ -26,3 +26,7 @@ FileScanner will:
     npm install
     ```
 5. Take a bow. You are done with set up! :D
+
+## TODO
+- Setup .travis.yml
+- Integrate Coveralls
