@@ -13,4 +13,8 @@ describe('canary', function () {
 	it('test add function', function(){
 		expect(VirusTotal.add(2,3)).to.equal(5);
 	});
+
+	it('test subtract function', function(){
+		expect(VirusTotal.subtract(3,2)).to.equal(1);
+	});
 });
