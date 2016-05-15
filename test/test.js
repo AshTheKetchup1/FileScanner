@@ -9,4 +9,8 @@ describe('canary', function () {
 	it ('canary function', function () {
 		expect(VirusTotal.foo()).to.equal("canary");
 	});
+
+	it('test add function', function(){
+		expect(VirusTotal.add(2,3)).to.equal(5);
+	});
 });
