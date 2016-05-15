@@ -16,7 +16,7 @@ describe('VirusTotal.add', function () {
 		expect(VirusTotal.add(2,3)).to.equal(5);
 	});
 	it('test add function 2', function(){
-		expect(VirusTotal.add(-20,25)).to.equal(5);
+		expect(VirusTotal.add(-15,25)).to.equal(10);
 	});
 });
 
