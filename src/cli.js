@@ -1,4 +1,5 @@
 // TODO: Create tests
+// TODO: move functions out of action for testing
 
 var vorpal = require('vorpal')();
 
