@@ -13,6 +13,8 @@ var options = {
 		resource: '52d3df0ed60c46f336c131bf2ca454f73bafdc4b04dfa2aea80746f5ba9e6d1c'
 	}
 };
+
+// TODO: move the function into its own variable
 request.post(options, function(err,httpResponse,body){
 	if (!err && httpResponse.statusCode == 200) {
     console.log(JSON.parse(body));
