@@ -1,10 +1,4 @@
 var request = require('request');
-// request('http://www.google.com', function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     console.log(body) // Show the HTML for the Google homepage.
-//   }
-// });
-
 
 var options = {
 	url:'https://www.virustotal.com/vtapi/v2/file/report',
@@ -14,23 +8,20 @@ var options = {
 	}
 };
 
-// TODO: move the function into its own variable
-request.post(options, function(err,httpResponse,body){
-	if (!err && httpResponse.statusCode == 200) {
-    console.log(JSON.parse(body));
-  }
-});
+// request.post(options, function(err,httpResponse,body){
+// 	if (!err && httpResponse.statusCode == 200) {
+//     console.log(JSON.parse(body));
+//   }
+// });
 
-// class VirusTotal {
-// 	static foo () {
-// 		return 'canary';
-// 	}
-// 	static add (num1,num2) {
-// 		return num1+num2;
-// 	}
-// 	static subtract (num1, num2) {
-// 		return num1-num2;
-// 	}
-// }
-//
-// module.exports = VirusTotal;
+var printToScreen = function (err, data) {
+	if (err) throw err;
+	console.log(data);
+}
+
+var getScanResult = function (options, callback) {
+	// TODO: Fill in the rest here.
+	// I should be able to call getScanResult(options, printToScreen);
+}
+
+getScanResult(options, callback);
