@@ -24,4 +24,4 @@ var getScanResult = function (options, callback) {
 	// I should be able to call getScanResult(options, printToScreen);
 }
 
-getScanResult(options, callback);
+getScanResult(options, printToScreen);
