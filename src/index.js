@@ -7,6 +7,7 @@ class VirusTotal{
 	}
 
 	// TODO: Implement the rest of the VirusTotal API
+	// TODO: Can we reduce the amount of copy and paste?
 
 	scanFile(filePath,callback){
 		var stuff = {
