@@ -1,10 +1,27 @@
 var request = require('request');
+var fs = require('fs');
+var path = require('path');
 class VirusTotal{
 	constructor(apikey){
 		this.apikey = apikey;
 	}
 
 	// TODO: Implement the rest of the VirusTotal API
+
+	scanFile(filePath,callback){
+		var stuff = {
+			url:'https://www.virustotal.com/vtapi/v2/file/scan',
+			formData: {
+				apikey: this.apikey,
+				file: ("file", path.basename(filePath), fs.createReadStream(filePath))
+			}
+		}
+		request.post(stuff, function(err,httpResponse,body){
+			if (!err && httpResponse.statusCode == 200) {
+		    callback(err,JSON.parse(body));
+		  }
+		});
+	}
 
 	getFileScanReport(resourceId,callback){
 		var stuff = {
@@ -42,6 +59,7 @@ var testCallbackFunct = function(err, data){
 	console.log(data);
 }
 
-var someName = new VirusTotal('30f431b8ac4a160a0bc1816b73489766e23ce9ffd5954ca2706d4aa352ad7204');
-//someName.getFileScanReport('52d3df0ed60c46f336c131bf2ca454f73bafdc4b04dfa2aea80746f5ba9e6d1c', testCallbackFunct);
-someName.getURLScanReport("http://www.virustotal.com", testCallbackFunct);
+var someName = new VirusTotal('apikey');
+someName.getFileScanReport('733f04a077cd0c0a1a9aa767ce4f4dcdd7de6b8c8ff3e3adc3f9bfb1cb7aeb48', testCallbackFunct);
+//someName.getURLScanReport("http://www.virustotal.com", testCallbackFunct);
+//someName.scanFile('test/files/safe.txt',testCallbackFunct);
