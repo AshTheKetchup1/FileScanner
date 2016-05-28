@@ -1,13 +1,30 @@
 var request = require('request');
 var fs = require('fs');
 var path = require('path');
+var crypto = require('crypto');
 class VirusTotal{
 	constructor(apikey){
 		this.apikey = apikey;
 	}
 
 	// TODO: Implement the rest of the VirusTotal API
-	// TODO: Can we reduce the amount of copy and paste?
+
+	createHash(filePath,callback){
+		var hash = crypto.createHash('sha256');
+		var input = fs.createReadStream(filePath);
+		var stream = input.pipe(hash);
+		stream.on('finish',function(){
+			callback(null,hash.read().toString('hex'));
+		});
+	}
+
+	requestDotPost(stuff, callback){
+		request.post(stuff, function(err,httpResponse,body){
+			if (!err && httpResponse.statusCode == 200) {
+		    callback(err,JSON.parse(body));
+		  }
+		});
+	}
 
 	scanFile(filePath,callback){
 		var stuff = {
@@ -17,11 +34,7 @@ class VirusTotal{
 				file: ("file", path.basename(filePath), fs.createReadStream(filePath))
 			}
 		}
-		request.post(stuff, function(err,httpResponse,body){
-			if (!err && httpResponse.statusCode == 200) {
-		    callback(err,JSON.parse(body));
-		  }
-		});
+		this.requestDotPost(stuff,callback);
 	}
 
 	getFileScanReport(resourceId,callback){
@@ -32,11 +45,7 @@ class VirusTotal{
 				resource: resourceId
 			}
 		};
-		request.post(stuff, function(err,httpResponse,body){
-			if (!err && httpResponse.statusCode == 200) {
-		    callback(err,JSON.parse(body));
-		  }
-		});
+		this.requestDotPost(stuff,callback);
 	}
 
 	getURLScanReport(resourceId,callback){
@@ -48,11 +57,7 @@ class VirusTotal{
 				scan: "1"
 			}
 		};
-		request.post(stuff, function(err,httpResponse,body){
-			if (!err && httpResponse.statusCode == 200) {
-		    callback(err,JSON.parse(body));
-		  }
-		});
+		this.requestDotPost(stuff,callback);
 	}
 }
 
@@ -61,6 +66,7 @@ var testCallbackFunct = function(err, data){
 }
 
 var someName = new VirusTotal('apikey');
-someName.getFileScanReport('733f04a077cd0c0a1a9aa767ce4f4dcdd7de6b8c8ff3e3adc3f9bfb1cb7aeb48', testCallbackFunct);
-//someName.getURLScanReport("http://www.virustotal.com", testCallbackFunct);
+//someName.getFileScanReport('6adccd5984f137482b32fbea59d69ae2e184b28b0b4d40db85e9fa350add4d57', testCallbackFunct);
+//someName.getURLScanReport("http://www.youtube.com", testCallbackFunct);
 //someName.scanFile('test/files/safe.txt',testCallbackFunct);
+someName.createHash('test/files/safe.txt',testCallbackFunct);
