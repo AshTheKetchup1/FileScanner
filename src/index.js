@@ -2,10 +2,14 @@ var request = require('request');
 var fs = require('fs');
 var path = require('path');
 var crypto = require('crypto');
+
+//TODO: Export the VirusTotal class. Make it usable in other files
+
 class VirusTotal{
 	constructor(apikey){
 		this.apikey = apikey;
 	}
+
 
 	// TODO: Implement the rest of the VirusTotal API
 
