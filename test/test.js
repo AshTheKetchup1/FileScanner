@@ -1,30 +1,62 @@
 var expect = require('chai').expect;
 var VirusTotal = require('../src/index.js');
+// var Car = require('../experimental/index.js');
 
-// describe('canary', function () {
-// 	it ('canary test', function () {
-// 		expect(1).to.equal(1);
-// 	});
-//
-// 	it ('canary function', function () {
-// 		expect(VirusTotal.foo()).to.equal("canary");
-// 	});
+it ('hash safe.txt', function (){
+	
+});
+
+// it ('canary test', function () {
+// 	expect(1).to.equal(1);
 // });
 //
-// describe('VirusTotal.add', function () {
-// 	it('test add function', function(){
-// 		expect(VirusTotal.add(2,3)).to.equal(5);
+// describe('Car', function () {
+// 	it ('red car', function () {
+// 		var redCar = new Car("red");
+// 		expect(redCar.color).to.equal('red');
 // 	});
-// 	it('test add function 2', function(){
-// 		expect(VirusTotal.add(-15,25)).to.equal(10);
-// 	});
-// });
 //
-// describe('VirusTotal.subtract', function () {
-// 	it('test subtract function', function(){
-// 		expect(VirusTotal.subtract(3,2)).to.equal(1);
+// 	describe('car.drive', function () {
+// 		var car;
+// 		before(function () {
+// 			car = new Car('purple');
+// 		});
+//
+// 		it ('miles driven 1000', function () {
+// 			// var car = new Car('purple');
+// 			car.drive(1000);
+// 			expect(car.miles).to.equal(1000);
+// 		});
+//
+// 		it ('mile driven 100', function () {
+// 			// var car = new Car('purple');
+// 			car.drive(100);
+// 			expect(car.miles).to.equal(1100);
+// 		});
 // 	});
-// 	it('the other subtract function I guess', function(){
-// 		expect(VirusTotal.subtract(-20,25)).to.equal(-45);
+//
+// 	describe('car.addWheels', function () {
+// 		var car;
+// 		before(function () {
+// 			car = new Car('red');
+// 		});
+//
+// 		it ('add 1 wheel', function (done) {
+// 			var callbackFunc = function () {
+// 				expect(car.wheels).to.equal(5);
+// 				done();
+// 			};
+//
+// 			car.addWheels(1, callbackFunc);
+// 		});
+//
+// 		it ('add 5 wheels', function (done) {
+// 			var callbackFunc = function () {
+// 				expect(car.wheels).to.equal(10);
+// 				done();
+// 			};
+//
+// 			car.addWheels(5, callbackFunc);
+// 		});
 // 	});
 // });

@@ -12,8 +12,7 @@ class VirusTotal{
 
 
 	// TODO: Implement the rest of the VirusTotal API
-
-	createHash(filePath,callback){
+	static createHash(filePath,callback){
 		var hash = crypto.createHash('sha256');
 		var input = fs.createReadStream(filePath);
 		var stream = input.pipe(hash);
@@ -37,7 +36,7 @@ class VirusTotal{
 				apikey: this.apikey,
 				file: ("file", path.basename(filePath), fs.createReadStream(filePath))
 			}
-		}
+		};
 		this.requestDotPost(stuff,callback);
 	}
 
@@ -67,10 +66,12 @@ class VirusTotal{
 
 var testCallbackFunct = function(err, data){
 	console.log(data);
-}
+};
 
-var someName = new VirusTotal('apikey');
+// var someName = new VirusTotal('apikey');
 //someName.getFileScanReport('6adccd5984f137482b32fbea59d69ae2e184b28b0b4d40db85e9fa350add4d57', testCallbackFunct);
 //someName.getURLScanReport("http://www.youtube.com", testCallbackFunct);
 //someName.scanFile('test/files/safe.txt',testCallbackFunct);
-someName.createHash('test/files/safe.txt',testCallbackFunct);
+// VirusTotal.createHash('test/files/safe.txt',testCallbackFunct);
+
+module.exports = VirusTotal;

@@ -20,7 +20,7 @@ vorpal
     }
     else
     {
-      greeting = "Hello there!"
+      greeting = "Hello there!";
     }
     this.log(greeting);
     callback();
@@ -31,7 +31,7 @@ vorpal
   .action(function(args, callback){
     this.log(args.words);
     callback();
-  })
+  });
 
 vorpal
   .command('add <numbers...>', 'Adds numbers after add')
