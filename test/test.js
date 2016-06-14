@@ -60,6 +60,24 @@ describe('virusTotalObj', function () {
 			virusTotalObj.getFileScanReport('valid resourceId', callback);
 		});
 	});
+
+	describe('scanFile test', function(){
+		before(function(){
+			sinon
+				.stub(request,'post')
+				.yields(null, {statusCode: 200}, '{"response_code": 1}');
+		});
+		after(function(){
+			request.post.restore();
+		});
+		it('scan file', function(done){
+			var callback = function(error, data){
+				expect(data.response_code).to.equal(1);
+				done();
+			};
+			virusTotalObj.scanFile('file path',callback);
+		});
+	});
 });
 
 
