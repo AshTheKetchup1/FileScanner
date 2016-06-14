@@ -1,5 +1,7 @@
 var expect = require('chai').expect;
 var VirusTotal = require('../src/index.js');
+var sinon = require('sinon');
+var request = require('request');
 // var Car = require('../experimental/index.js');
 
 it ('hash safe.txt', function (done){
@@ -9,6 +11,58 @@ it ('hash safe.txt', function (done){
 	};
 	VirusTotal.createHash('test/files/safe.txt', someCallback);
 });
+
+describe('virusTotalObj', function () {
+	var virusTotalObj;
+	before(function () {
+		virusTotalObj = new VirusTotal('fake api key');
+	});
+
+	describe('getFileScanReport Invalid resourceId', function () {
+		before(function () {
+			sinon
+				.stub(request, 'post')
+				.yields(null, {statusCode: 200}, '{"response_code": 0}');
+		});
+
+		after(function () {
+			request.post.restore();
+		});
+
+		it ('get invalid file result', function (done){
+			var callback = function (error, data) {
+				// console.log(data);
+				expect(data.response_code).to.equal(0);
+				done();
+			};
+
+			virusTotalObj.getFileScanReport('some resourceId', callback);
+		});
+	});
+
+	describe('getFileScanReport Valid resourceId', function () {
+		before(function () {
+			sinon
+				.stub(request, 'post')
+				.yields(null, {statusCode: 200}, '{"response_code": 1}');
+		});
+
+		after(function () {
+			request.post.restore();
+		});
+
+		it ('get valid file report', function (done) {
+			var callback = function (error, data) {
+				expect(data.response_code).to.equal(1);
+				done();
+			};
+
+			virusTotalObj.getFileScanReport('valid resourceId', callback);
+		});
+	});
+});
+
+
 
 // it ('canary test', function () {
 // 	expect(1).to.equal(1);
