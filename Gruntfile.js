@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		shell: {
 			test: {
-				command: "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -c"				
+				command: "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -c"
 			},
 			clean: {
 				command: "rm -rf ./coverage"
@@ -32,11 +32,11 @@ module.exports = function(grunt) {
 			},
 			src: {
 				files: [srcFiles],
-				tasks: ['jshint:src', 'exec:test']
+				tasks: ['jshint:src', 'shell:test']
 			},
 			test: {
 				files: [testFiles],
-				tasks: ['jshint:test', 'exec:test']
+				tasks: ['jshint:test', 'shell:test']
 			},
 			Gruntfile: {
 				files: ['Gruntfile.js'],
