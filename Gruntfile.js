@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks. loads tasks
+	// require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks. loads tasks
 
 	var srcFiles = 'src/**/*.js';
 	var testFiles = 'test/**/*.js';
@@ -28,7 +28,8 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			options: {
-				livereload: true
+				livereload: true,
+				spawn: false
 			},
 			src: {
 				files: [srcFiles],
@@ -55,6 +56,10 @@ module.exports = function(grunt) {
 			}
 		}
 	});
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-shell');
 
 	// Default task(s)
 	grunt.registerTask('test', ['jshint', 'shell:test']);
