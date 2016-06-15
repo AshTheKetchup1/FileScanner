@@ -78,6 +78,79 @@ describe('virusTotalObj', function () {
 			virusTotalObj.scanFile('file path',callback);
 		});
 	});
+
+	describe('getURLScanReport', function(){
+		before(function(){
+			sinon
+				.stub(request,'post')
+				.yields(null, {statusCode:200}, '{"response_code": 1}');
+		});
+		after(function(){
+			request.post.restore();
+		});
+		it('get URL scan report', function(done){
+			var callback = function(error, data){
+				expect (data.response_code).to.equal(1);
+				done();
+			};
+			virusTotalObj.getURLScanReport('some resourceId',callback);
+		});
+	});
+
+	describe('requestDotPost',function(){
+		before(function(){
+			sinon
+				.stub(request,'post')
+				.yields(null,{statusCode:201},'{"response_code": 1}');
+		});
+		after(function(){
+			request.post.restore();
+		});
+		it('test requestDotPost else path',function(done){
+			var callback = function(error,data){
+				expect(error.message).to.equal('statusCode!=200');
+				//console.log(error);
+				done();
+			};
+			virusTotalObj.requestDotPost('stuff',callback);
+		});
+	});
+
+	describe('requestDotPost 2', function(){
+		before(function(){
+			sinon
+				.stub(request,'post')
+				.yields(new Error('fake error'));
+		});
+		after(function(){
+			request.post.restore();
+		});
+		it('requestDotPost yields error',function(done){
+			var callback = function(error,data){
+				expect(error.message).to.equal('fake error');
+				done();
+			};
+			virusTotalObj.requestDotPost('stuff',callback);
+		});
+	});
+
+	describe('requestDotPost 3', function(){
+		before(function(){
+			sinon
+				.stub(request,'post')
+				.yields(new Error('some error, idk'),{statusCode:201});
+		});
+		after(function(){
+			request.post.restore();
+		});
+		it('requestDotPost yields error',function(done){
+			var callback = function(error,data){
+				expect(error.message).to.equal('some error, idk');
+				done();
+			};
+			virusTotalObj.requestDotPost('stuff',callback);
+		});
+	});
 });
 
 

@@ -23,9 +23,16 @@ class VirusTotal{
 
 	requestDotPost(stuff, callback){
 		request.post(stuff, function(err,httpResponse,body){
-			if (!err && httpResponse.statusCode == 200) {
-		    callback(err,JSON.parse(body));
+			if (err) {
+		    callback(err);
 		  }
+			else if(httpResponse.statusCode != 200){
+				var error = new Error('statusCode!=200');
+				callback(error);
+			}
+			else{
+				callback(err,JSON.parse(body));
+			}
 		});
 	}
 
@@ -64,9 +71,6 @@ class VirusTotal{
 	}
 }
 
-var testCallbackFunct = function(err, data){
-	console.log(data);
-};
 
 // var someName = new VirusTotal('apikey');
 //someName.getFileScanReport('6adccd5984f137482b32fbea59d69ae2e184b28b0b4d40db85e9fa350add4d57', testCallbackFunct);
