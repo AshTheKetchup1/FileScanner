@@ -1,15 +1,39 @@
+var fs = require('fs');
+
 class ResultTank{
   constructor(filePath){
       this.filePath = filePath;
-      this.scanResults = {};
+      try{
+        this.scanResults = JSON.parse(fs.readFileSync(this.filePath));
+      }
+      catch(err) {
+        this.scanResults = {};
+      }
   }
 
-  getScanResults(filePath){
-    return this.scanResults[filePath];
+  getScanResults(scannedFilePath){
+    return this.scanResults[scannedFilePath];
   }
 
-  addScanResults(filePath,results){
-    this.scanResults[filePath] = results;
+  addScanResults(scannedFilePath,results){
+    this.scanResults[scannedFilePath] = results;
+  }
+
+  saveToFile(){
+    fs.writeFileSync(this.filePath,JSON.stringify(this.scanResults));
+  }
+
+  readFromFile(){
+    this.scanResults = JSON.parse(fs.readFileSync(this.filePath));
   }
 
 }
+
+var testTank = new ResultTank("scanResults.txt");
+var testTank2 = new ResultTank("doesntExist.txt");
+// testTank.addScanResults("fake.txt", {resultCode: 1});
+// testTank.saveToFile();
+//testTank.readFromFile();
+//console.log(testTank.getScanResults("fake.txt"));
+console.log(testTank.scanResults);
+console.log(testTank2.scanResults);
